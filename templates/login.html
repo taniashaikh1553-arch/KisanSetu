@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+{% block title %}Login - KisanSetu{% endblock %}
+
+{% block content %}
+
+<div class="login-page">
+
+    <!-- LEFT SIDE -->
+    <div class="login-intro">
+
+        <h1>Welcome to</h1>
+        <h2>KisanSetu</h2>
+
+        <p class="tagline">
+            Connecting Farmers with Procurement Centres
+            for a Smarter, Faster and Fairer System.
+        </p>
+
+        <div class="features">
+
+            <div class="feature">
+                <div class="feature-icon">👥</div>
+                <span>Better Queue<br>Management</span>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">✓</div>
+                <span>Transparent<br>Process</span>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🌱</div>
+                <span>Stronger<br>Farmer Support</span>
+            </div>
+
+        </div>
+
+        <div class="field-decoration">
+            🌾 &nbsp; 🌱 &nbsp; 🌾 &nbsp; 🌱 &nbsp; 🌾
+        </div>
+
+    </div>
+
+
+    <!-- RIGHT SIDE -->
+    <div class="login-card">
+
+        <h2>Login</h2>
+
+        <p class="login-subtitle">
+            Access your account to continue
+        </p>
+
+
+        <!-- ROLE SELECTION -->
+        <div class="role-buttons">
+
+            <button type="button"
+                    class="role-btn active"
+                    id="farmerBtn"
+                    onclick="selectRole('farmer')">
+                👨‍🌾 Farmer
+            </button>
+
+            <button type="button"
+                    class="role-btn"
+                    id="centreBtn"
+                    onclick="selectRole('centre')">
+                🏢 Procurement Centre
+            </button>
+
+        </div>
+
+
+        <!-- LOGIN FORM -->
+        <form action="/login" method="POST">
+
+            <input type="hidden"
+                   name="role"
+                   id="role"
+                   value="farmer">
+
+
+            <div class="input-group-custom">
+
+                <span>📱</span>
+
+                <input type="text"
+                       name="mobile"
+                       placeholder="Mobile Number"
+                       required>
+
+            </div>
+
+
+            <div class="input-group-custom">
+
+                <span>🔒</span>
+
+                <input type="password"
+                       name="password"
+                       placeholder="Password"
+                       required>
+
+            </div>
+
+
+            <div class="login-options">
+
+                <label>
+                    <input type="checkbox" name="remember">
+                    Remember me
+                </label>
+
+                <a href="#">Forgot Password?</a>
+
+            </div>
+
+
+            <button type="submit" class="login-submit">
+                Login →
+            </button>
+
+        </form>
+
+
+        <div class="new-account">
+            <span>New here?</span>
+        </div>
+
+
+        <a href="#" class="create-account">
+            👤 &nbsp; Create Account
+        </a>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function selectRole(role) {
+
+    const farmerBtn = document.getElementById("farmerBtn");
+    const centreBtn = document.getElementById("centreBtn");
+    const roleInput = document.getElementById("role");
+
+    roleInput.value = role;
+
+    farmerBtn.classList.remove("active");
+    centreBtn.classList.remove("active");
+
+    if (role === "farmer") {
+        farmerBtn.classList.add("active");
+    } else {
+        centreBtn.classList.add("active");
+    }
+}
+
+</script>
+
+{% endblock %}
